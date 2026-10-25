@@ -1,0 +1,61 @@
+Worker_ID,Department,Job_Role,Shift,PPE_Compliance,Safety_Training_Status,Fatigue_Level,Safety_Observations,Near_Misses,Previous_Incidents,Risk_Level
+W001,Ventilation,Operator,Day,True,Current,High,1,0,0,Medium
+W002,Ventilation,Technician,Day,True,Current,Medium,2,0,0,Low
+W003,Blasting,Supervisor,Day,True,Current,Low,1,0,0,Low
+W004,Ventilation,General Worker,Day,True,Current,Low,1,0,0,Low
+W005,Maintenance,Engineer,Day,False,Expired,High,1,1,0,Low
+W006,Drilling,Operator,Day,True,Current,High,1,0,0,Low
+W007,Blasting,General Worker,Day,False,Pending,Medium,3,0,0,Low
+W008,Maintenance,Supervisor,Night,True,Expired,Low,1,0,0,Medium
+W009,Blasting,Engineer,Night,True,Expired,High,0,0,1,Medium
+W010,Drilling,Supervisor,Night,True,Current,Low,0,1,0,Low
+W011,Haulage,Technician,Day,True,Current,Low,2,0,0,Medium
+W012,Blasting,Technician,Day,True,Current,Medium,1,0,0,Low
+W013,Drilling,Engineer,Day,True,Current,Low,1,0,1,Low
+W014,Haulage,Technician,Night,True,Pending,Low,4,1,1,Low
+W015,Drilling,Engineer,Day,True,Current,Low,2,0,0,Low
+W016,Loading,Operator,Night,True,Pending,Low,1,1,2,Low
+W017,Ventilation,General Worker,Night,True,Current,Low,2,0,1,Low
+W018,Maintenance,Supervisor,Day,True,Current,High,2,1,0,Medium
+W019,Drilling,Supervisor,Night,True,Expired,Low,1,0,0,Medium
+W020,Drilling,Supervisor,Day,True,Current,Low,1,1,1,Low
+W021,Loading,Technician,Night,True,Expired,High,0,0,1,Low
+W022,Ventilation,Technician,Day,True,Expired,Low,2,0,0,Medium
+W023,Haulage,Technician,Day,False,Current,Medium,0,0,1,Low
+W024,Ventilation,Technician,Day,True,Current,Medium,0,0,0,Medium
+W025,Maintenance,Supervisor,Day,True,Current,Medium,1,0,1,Low
+W026,Blasting,Engineer,Night,True,Current,Low,0,1,1,Medium
+W027,Haulage,General Worker,Day,True,Current,Low,0,1,0,Medium
+W028,Ventilation,Technician,Day,True,Pending,High,2,1,3,Low
+W029,Blasting,Operator,Night,False,Current,Low,3,0,0,High
+W030,Loading,Technician,Day,True,Expired,Low,3,0,1,Medium
+W031,Blasting,General Worker,Night,False,Current,Low,3,1,0,Low
+W032,Blasting,Engineer,Night,True,Current,Low,1,0,0,Low
+W033,Ventilation,Engineer,Day,True,Current,Low,2,0,0,Low
+W034,Haulage,Supervisor,Day,True,Current,Low,3,1,0,Low
+W035,Ventilation,General Worker,Night,True,Expired,High,1,0,0,Low
+W036,Ventilation,General Worker,Night,True,Current,Medium,0,2,0,Low
+W037,Maintenance,Engineer,Night,True,Expired,Low,0,0,0,Low
+W038,Blasting,Supervisor,Night,False,Current,Medium,0,0,0,Low
+W039,Drilling,Operator,Day,True,Current,Low,1,0,0,Low
+W040,Blasting,Supervisor,Night,False,Current,Medium,0,0,0,Low
+W041,Maintenance,Operator,Night,False,Current,Low,1,0,1,High
+W042,Loading,General Worker,Night,False,Current,Low,0,0,0,Medium
+W043,Maintenance,Technician,Day,True,Expired,Low,0,1,0,Medium
+W044,Ventilation,Operator,Night,True,Current,Medium,1,0,1,High
+W045,Ventilation,Technician,Day,True,Expired,Low,2,0,1,Low
+W046,Haulage,Engineer,Day,False,Expired,Low,1,0,0,High
+W047,Loading,Operator,Night,True,Pending,Low,3,0,0,Medium
+W048,Maintenance,Supervisor,Day,True,Expired,Medium,0,0,0,Low
+W049,Ventilation,Technician,Day,True,Current,Medium,0,0,1,Low
+W050,Blasting,Technician,Day,True,Current,Medium,2,0,1,Low
+W051,Maintenance,General Worker,Day,True,Pending,High,1,0,1,Low
+W052,Maintenance,Technician,Night,False,Current,Low,0,0,0,Low
+W053,Drilling,Operator,Night,True,Current,Medium,2,0,1,High
+W054,Haulage,Supervisor,Day,True,Current,High,3,0,1,Medium
+W055,Blasting,General Worker,Day,True,Current,Low,2,0,2,Medium
+W056,Drilling,Engineer,Day,True,Current,Low,1,0,2,Low
+W057,Maintenance,Supervisor,Day,True,Current,Medium,0,3,0,Low
+W058,Ventilation,Engineer,Day,False,Current,Medium,0,0,2,Low
+W059,Haulage,General Worker,Night,True,Expired,High,2,0,0,Medium
+W060,Blasting,General Worker,Day,True,Pending,High,4,0,0,High

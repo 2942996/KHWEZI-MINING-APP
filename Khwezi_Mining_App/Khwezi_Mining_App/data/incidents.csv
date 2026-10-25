@@ -1,0 +1,41 @@
+Incident_ID,Date,Time,Shift,Location,Department,Incident_Type,Severity,Injury_Status,Lost_Time_Injury,Cause,Corrective_Action,Incident_Status
+INC001,2026-07-10,21:30,Night,Maintenance Zone 4,Drilling,Equipment Contact,Fatal,No Injury,False,Equipment Failure,Under review,Open
+INC002,2026-08-15,18:15,Day,Drilling Zone 1,Blasting,Slip/Trip/Fall,Moderate,Injured,False,Human Error,Completed,Open
+INC003,2026-08-05,08:45,Day,Maintenance Zone 2,Ventilation,Chemical Exposure,Moderate,No Injury,False,Inadequate Training,Completed,Closed
+INC004,2026-07-23,03:00,Night,Haulage Zone 4,Loading,Fire,Moderate,No Injury,False,Poor Housekeeping,Under review,Under Investigation
+INC005,2026-08-22,01:45,Night,Drilling Zone 2,Blasting,Equipment Contact,Minor,Injured,False,Inadequate Training,Completed,Closed
+INC006,2026-06-24,14:15,Day,Loading Zone 1,Drilling,Vehicle Collision,Major,Injured,True,Inadequate Training,Completed,Open
+INC007,2026-07-01,13:45,Night,Blasting Zone 4,Drilling,Equipment Contact,Moderate,No Injury,False,Environmental Condition,Under review,Closed
+INC008,2026-07-04,09:45,Night,Blasting Zone 2,Haulage,Equipment Contact,Fatal,No Injury,False,Human Error,Completed,Under Investigation
+INC009,2026-06-08,01:00,Night,Maintenance Zone 2,Drilling,Chemical Exposure,Major,No Injury,False,Human Error,Completed,Open
+INC010,2026-08-16,21:15,Night,Drilling Zone 2,Maintenance,Chemical Exposure,Minor,No Injury,False,Human Error,Completed,Closed
+INC011,2026-08-24,08:15,Night,Blasting Zone 3,Loading,Equipment Contact,Major,No Injury,False,Poor Housekeeping,Completed,Closed
+INC012,2026-07-11,00:45,Day,Drilling Zone 2,Maintenance,Fall of Ground,Minor,No Injury,False,Equipment Failure,Completed,Open
+INC013,2026-07-02,09:15,Night,Maintenance Zone 3,Maintenance,Struck By Object,Major,No Injury,False,Poor Housekeeping,Completed,Under Investigation
+INC014,2026-08-10,21:00,Day,Haulage Zone 1,Drilling,Vehicle Collision,Major,No Injury,False,Inadequate Training,Under review,Closed
+INC015,2026-08-17,22:30,Day,Ventilation Zone 3,Maintenance,Fire,Moderate,No Injury,False,Procedure Not Followed,Completed,Open
+INC016,2026-06-12,08:00,Day,Haulage Zone 2,Ventilation,Fall of Ground,Fatal,Injured,True,Equipment Failure,Completed,Under Investigation
+INC017,2026-08-30,17:00,Day,Drilling Zone 2,Maintenance,Slip/Trip/Fall,Fatal,Injured,True,Procedure Not Followed,Completed,Open
+INC018,2026-07-26,01:30,Night,Drilling Zone 3,Blasting,Vehicle Collision,Moderate,No Injury,False,Equipment Failure,Completed,Closed
+INC019,2026-08-11,19:15,Day,Blasting Zone 2,Loading,Slip/Trip/Fall,Fatal,No Injury,False,Equipment Failure,Completed,Closed
+INC020,2026-07-23,08:15,Day,Loading Zone 1,Loading,Equipment Contact,Moderate,No Injury,False,Equipment Failure,Completed,Closed
+INC021,2026-07-15,07:15,Day,Ventilation Zone 2,Loading,Fall of Ground,Major,Injured,True,Procedure Not Followed,Completed,Closed
+INC022,2026-07-15,21:30,Day,Drilling Zone 3,Blasting,Chemical Exposure,Fatal,Injured,True,Procedure Not Followed,Under review,Under Investigation
+INC023,2026-07-26,23:30,Night,Maintenance Zone 1,Loading,Chemical Exposure,Major,Injured,True,Equipment Failure,Under review,Under Investigation
+INC024,2026-07-26,16:15,Night,Loading Zone 1,Ventilation,Fall of Ground,Minor,Injured,False,Inadequate Training,Completed,Open
+INC025,2026-07-09,21:45,Night,Loading Zone 3,Maintenance,Equipment Contact,Major,No Injury,False,Equipment Failure,Completed,Closed
+INC026,2026-08-26,19:30,Night,Maintenance Zone 1,Haulage,Fall of Ground,Moderate,Injured,False,Equipment Failure,Completed,Under Investigation
+INC027,2026-08-17,14:45,Night,Ventilation Zone 2,Maintenance,Fire,Major,No Injury,False,Poor Housekeeping,Under review,Open
+INC028,2026-07-07,02:15,Night,Blasting Zone 2,Blasting,Slip/Trip/Fall,Major,No Injury,False,Human Error,Under review,Closed
+INC029,2026-08-18,14:45,Day,Ventilation Zone 4,Loading,Fire,Minor,Injured,False,Equipment Failure,Under review,Under Investigation
+INC030,2026-06-01,13:15,Day,Ventilation Zone 4,Drilling,Chemical Exposure,Minor,No Injury,False,Equipment Failure,Completed,Open
+INC031,2026-07-29,14:30,Night,Maintenance Zone 4,Maintenance,Fire,Moderate,No Injury,False,Equipment Failure,Completed,Closed
+INC032,2026-07-28,07:30,Night,Ventilation Zone 2,Haulage,Fire,Major,Injured,True,Human Error,Completed,Open
+INC033,2026-07-05,10:00,Day,Blasting Zone 2,Loading,Vehicle Collision,Major,No Injury,False,Equipment Failure,Completed,Open
+INC034,2026-07-24,10:45,Night,Drilling Zone 2,Loading,Fire,Fatal,No Injury,False,Inadequate Training,Completed,Open
+INC035,2026-08-13,15:00,Night,Haulage Zone 4,Loading,Chemical Exposure,Fatal,No Injury,False,Poor Housekeeping,Completed,Under Investigation
+INC036,2026-06-29,07:30,Night,Loading Zone 1,Loading,Fall of Ground,Fatal,Injured,True,Poor Housekeeping,Completed,Closed
+INC037,2026-06-22,04:00,Night,Maintenance Zone 1,Drilling,Vehicle Collision,Fatal,No Injury,False,Environmental Condition,Under review,Closed
+INC038,2026-06-24,08:45,Night,Blasting Zone 4,Haulage,Fall of Ground,Minor,No Injury,False,Environmental Condition,Under review,Closed
+INC039,2026-07-03,15:00,Day,Haulage Zone 2,Ventilation,Slip/Trip/Fall,Minor,Injured,False,Poor Housekeeping,Under review,Open
+INC040,2026-07-02,00:15,Day,Blasting Zone 4,Ventilation,Slip/Trip/Fall,Moderate,No Injury,False,Inadequate Training,Completed,Closed
