@@ -1,8 +1,7 @@
 # Pseudocode
 
-The pseudocode below is deliberately language-independent but follows the implemented Python/Streamlit logic.
 
-## P1. Login and role-based access
+## 1. Login and role-based access
 
 ```text
 FUNCTION Login(username, workerID, password)
@@ -31,7 +30,7 @@ IF Login form is submitted THEN
 END IF
 ```
 
-## P2. Administrator creates a worker account
+## 2. Administrator creates a worker account
 
 ```text
 FUNCTION CreateAccount(workerID, username, password, fullName, title, role)
@@ -59,7 +58,7 @@ FUNCTION CreateAccount(workerID, username, password, fullName, title, role)
 END FUNCTION
 ```
 
-## P3. Change password
+## 3. Change password
 
 ```text
 FUNCTION UpdatePassword(workerID, currentPassword, newPassword)
@@ -84,7 +83,7 @@ FUNCTION UpdatePassword(workerID, currentPassword, newPassword)
 END FUNCTION
 ```
 
-## P4. Upload data
+## 4. Upload data
 
 ```text
 FUNCTION ImportData(uploadedFile, currentData, fileName)
@@ -108,7 +107,7 @@ FUNCTION ImportData(uploadedFile, currentData, fileName)
 END FUNCTION
 ```
 
-## P5. Global search
+## 5. Global search
 
 ```text
 FUNCTION SearchSystem(query, workers, incidents, equipment, maintenance, alerts)
@@ -131,7 +130,7 @@ FUNCTION SearchSystem(query, workers, incidents, equipment, maintenance, alerts)
 END FUNCTION
 ```
 
-## P6. Save worker safety observation
+## 6. Save worker safety observation
 
 ```text
 IF SaveWorkerRecord is selected THEN
@@ -148,7 +147,7 @@ IF SaveWorkerRecord is selected THEN
 END IF
 ```
 
-## P7. Save incident
+## 7. Save incident
 
 ```text
 IF SaveIncident is selected THEN
@@ -165,7 +164,7 @@ IF SaveIncident is selected THEN
 END IF
 ```
 
-## P8. Equipment condition monitoring
+## 8. Equipment condition monitoring
 
 ```text
 FUNCTION EquipmentStatus(temperature, vibration)
@@ -184,7 +183,7 @@ status, message ← EquipmentStatus(selectedMachine.temperature,
 Display status, message and temperature-vibration chart
 ```
 
-## P9. Maintenance monitoring
+## 9. Maintenance monitoring
 
 ```text
 FOR EACH equipment item IN equipmentSummary DO
@@ -206,7 +205,7 @@ Display groups for Due, Overdue, Under Maintenance,
 Downtime > 12 hours, Alert Count ≥ 4 and Availability < 85%
 ```
 
-## P10. Risk assessment
+## 10. Risk assessment
 
 ```text
 FUNCTION AssessRisk(likelihood, consequence)
@@ -226,7 +225,7 @@ FUNCTION AssessRisk(likelihood, consequence)
 END FUNCTION
 ```
 
-## P11. Dashboard, alerts and navigation
+## 11. Dashboard, alerts and navigation
 
 ```text
 workers ← LoadData("workers.csv")
