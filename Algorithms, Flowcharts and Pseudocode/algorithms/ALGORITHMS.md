@@ -3,35 +3,41 @@
 
 ## 1. Login and role-based access control
 
-1. Receive the username, Worker ID and password from the login form.
-2. Read the saved user accounts from `users.csv`.
-3. Find a record with a matching username and Worker ID.
-4. Hash the entered password using the saved salt and compare it with the saved password hash.
-5. If all three credentials match, store the user profile in the session.
-6. Use the user role to get the permitted pages from `ROLE_PAGES`.
-7. Open the Home page and display the user's profile and available workspaces.
-8. Otherwise, display an incorrect-credentials error.
+1. Start
+2. Receive the username, Worker ID and password from the login form.
+3. Read the saved user accounts from `users.csv`.
+4. Find a record with a matching username and Worker ID.
+5. Hash the entered password using the saved salt and compare it with the saved password hash.
+6. If all three credentials match, store the user profile in the session.
+7. Use the user role to get the permitted pages from `ROLE_PAGES`.
+8. Open the Home page and display the user's profile and available workspaces.
+9. Otherwise, display an incorrect-credentials error.
+10. End
 
-##2. Administrator account creation
+## 2. Administrator account creation
 
-1. Confirm that the signed-in user is an Administrator.
-2. Check that all required fields have been entered.
-3. Check that the password contains at least eight characters.
-4. Search `workers.csv` to confirm that the Worker ID already exists in the worker database.
-5. Read `users.csv` and check that the Worker ID and username are not already in use.
-6. Generate a salt and password hash.
-7. Add the new account record to `users.csv`.
-8. Display a success message; otherwise show the relevant validation message.
+1. Start
+2. Confirm that the signed-in user is an Administrator.
+3. Check that all required fields have been entered.
+4. Check that the password contains at least eight characters.
+5. Search `workers.csv` to confirm that the Worker ID already exists in the worker database.
+6. Read `users.csv` and check that the Worker ID and username are not already in use.
+7. Generate a salt and password hash.
+8. Add the new account record to `users.csv`.
+9. Display a success message; otherwise show the relevant validation message.
+10. End
 
-##3. Password update
+## 3. Password update
 
-1. Check that the new password has at least eight characters.
-2. Read the user accounts from `users.csv`.
-3. Find the account with the signed-in user's Worker ID.
-4. Verify the entered current password against the saved password hash.
-5. If it matches, create a new salted hash for the new password.
-6. Replace only that account's password hash and save `users.csv`.
-7. Confirm that the password was updated; otherwise display an error.
+1. Start
+2. Check that the new password has at least eight characters.
+3. Read the user accounts from `users.csv`.
+4. Find the account with the signed-in user's Worker ID.
+5. Verify the entered current password against the saved password hash.
+6. If it matches, create a new salted hash for the new password.
+7. Replace only that account's password hash and save `users.csv`.
+8. Confirm that the password was updated; otherwise display an error.
+9. End
 
 ## 4.Data upload and validation
 
