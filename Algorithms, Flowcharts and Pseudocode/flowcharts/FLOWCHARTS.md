@@ -1,8 +1,7 @@
 # Flowcharts
 
-These diagrams use **Mermaid**. GitHub renders them automatically in Markdown files.
 
-## F1. Login and role-based access control
+## 1. Login and role-based access control
 
 ```mermaid
 flowchart TD
@@ -17,7 +16,7 @@ flowchart TD
     H --> I([End])
 ```
 
-## F2. Administrator account creation
+## 2. Administrator account creation
 
 ```mermaid
 flowchart TD
@@ -36,7 +35,7 @@ flowchart TD
     J --> K([End])
 ```
 
-## F3. Data upload and validation
+## 3. Data upload and validation
 
 ```mermaid
 flowchart TD
@@ -54,7 +53,7 @@ flowchart TD
     K --> L([End])
 ```
 
-## F4. Change password
+## 4. Change password
 
 ```mermaid
 flowchart TD
@@ -72,7 +71,7 @@ flowchart TD
     J --> K([End])
 ```
 
-## F5. Global search
+## 5. Global search
 
 ```mermaid
 flowchart TD
@@ -88,7 +87,7 @@ flowchart TD
     F -- No --> H
 ```
 
-## F6. Worker safety observation
+## 6. Worker safety observation
 
 ```mermaid
 flowchart TD
@@ -104,7 +103,7 @@ flowchart TD
     I --> J([End])
 ```
 
-## F7. Incident record and filter
+## 7. Incident record and filter
 
 ```mermaid
 flowchart TD
@@ -123,7 +122,7 @@ flowchart TD
     K --> G
 ```
 
-## F8. Equipment condition monitoring
+## 8. Equipment condition monitoring
 
 ```mermaid
 flowchart TD
@@ -141,7 +140,7 @@ flowchart TD
     J --> K([End])
 ```
 
-## F9. Maintenance monitoring
+## 9. Maintenance monitoring
 
 ```mermaid
 flowchart TD
@@ -163,7 +162,7 @@ flowchart TD
     M --> N([End])
 ```
 
-## F10. Risk assessment
+## 10. Risk assessment
 
 ```mermaid
 flowchart TD
@@ -181,7 +180,7 @@ flowchart TD
     I --> J
 ```
 
-## F11. Alert generation and dashboard
+## 11. Alert generation and dashboard
 
 ```mermaid
 flowchart TD
@@ -195,7 +194,7 @@ flowchart TD
     H --> I([End])
 ```
 
-## F12. Navigation and sign out
+## 12. Navigation and sign out
 
 ```mermaid
 flowchart TD
