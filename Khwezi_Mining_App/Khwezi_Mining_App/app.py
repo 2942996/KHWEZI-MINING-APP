@@ -1,9 +1,4 @@
-﻿"""Khwezi Mining Monitoring App.
-
-Run with: streamlit run app.py
-This classroom project uses rule-based Python only. It does not use LLMs,
-machine learning, external APIs or hidden automated decisions.
-"""
+﻿# Khwezi Mining Monitoring App
 
 from pathlib import Path
 from datetime import datetime
@@ -40,16 +35,14 @@ ROLE_PAGES = {
     "Manager": ["Dashboard", "Worker Safety", "Safety Incidents", "Equipment", "Maintenance", "Risk Assessment", "Alerts"],
 }
 
-
+# Return a salted password hash instead of saving a plain password
 def password_hash(password, salt=None):
-    """Return a salted password hash instead of saving a plain password."""
     salt = salt or secrets.token_hex(16)
     digest = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt.encode("utf-8"), 200_000).hex()
     return f"{salt}${digest}"
 
-
+# Check one password against the saved password hash
 def password_matches(password, stored_hash):
-    """Check one password against the saved password hash."""
     try:
         salt, saved_digest = stored_hash.split("$", 1)
     except ValueError:
@@ -57,9 +50,8 @@ def password_matches(password, stored_hash):
     check_digest = password_hash(password, salt).split("$", 1)[1]
     return hmac.compare_digest(check_digest, saved_digest)
 
-
+# Keep worker accounts in data/users.csv using functions and CSV files
 class UserStore:
-    """Keep worker accounts in data/users.csv using functions and CSV files."""
 
     def __init__(self):
         if not USERS_FILE.exists():
@@ -132,29 +124,24 @@ class UserStore:
 
 USER_STORE = UserStore()
 
-
+# Sign in only if the username, Worker ID and password match one record
 def login(username, worker_id, password):
-    """Sign in only if the username, Worker ID and password match one record."""
     return USER_STORE.authenticate(username, worker_id, password)
 
-
+# Create a worker account in users.csv
 def create_account(worker_id, username, password, full_name, title, role):
-    """Create a worker account in users.csv."""
     return USER_STORE.create_user(worker_id, username, password, full_name, title, role)
 
-
+# Update the signed-in worker's password in users.csv
 def change_password(worker_id, current_password, new_password):
-    """Update the signed-in worker's password in users.csv."""
     return USER_STORE.update_password(worker_id, current_password, new_password)
 
-
+# Return the pages visible to each role
 def pages_for_role(role):
-    """Return the pages visible to each role."""
     return ROLE_PAGES.get(role, ["Dashboard"])
 
-
+# Return role choices for the registration form
 def available_roles():
-    """Return role choices for the registration form."""
     return list(ROLE_PAGES)
 
 MOTIVATIONAL_QUOTES = [
@@ -188,9 +175,8 @@ MINE_ICON_SVG = """<svg class='mine-mark' viewBox='0 0 128 67' aria-hidden='true
 
 st.set_page_config(page_title="Khwezi Mining App", page_icon="🌋", layout="wide")
 
-
+# Apply a consistent volcano-inspired visual theme to the Streamlit UI
 def apply_custom_style():
-    """Apply a consistent volcano-inspired visual theme to the Streamlit UI."""
     st.markdown(
         """
         <style>
@@ -340,9 +326,8 @@ def apply_custom_style():
         unsafe_allow_html=True,
     )
 
-
+# Display a visually consistent page heading
 def page_heading(title, subtitle, background_image=None, icon_svg=None):
-    """Display a visually consistent page heading."""
     if background_image is None:
         background_image = background_as_data_url(DATA_FOLDER / "login_background.jpg")
     alert_badge = ""
@@ -367,38 +352,33 @@ def page_heading(title, subtitle, background_image=None, icon_svg=None):
         unsafe_allow_html=True,
     )
 
-
+# Choose a different motivational quote for the signed-in user
 def choose_new_quote():
-    """Choose a different motivational quote for the signed-in user."""
     current_quote = st.session_state.get("quote", "")
     choices = [quote for quote in MOTIVATIONAL_QUOTES if quote != current_quote]
     st.session_state.quote = random.choice(choices or MOTIVATIONAL_QUOTES)
 
-
+# Open a page and remember the previous page
 def go_to_page(page):
-    """Open a page and remember the previous page."""
     current_page = st.session_state.get("current_page", "Home")
     if current_page != page:
         st.session_state.setdefault("page_history", []).append(current_page)
         st.session_state.current_page = page
 
-
+# Return to the most recently opened page
 def go_back():
-    """Return to the most recently opened page."""
     history = st.session_state.get("page_history", [])
     if history:
         st.session_state.current_page = history.pop()
 
-
+# Read a CSV or Excel file selected by the user
 def read_uploaded_table(uploaded_file):
-    """Read a CSV or Excel file selected by the user."""
     if uploaded_file.name.lower().endswith(".csv"):
         return pd.read_csv(uploaded_file)
     return pd.read_excel(uploaded_file)
 
-
+# Validate and safely replace one of the project's data tables
 def show_data_importer(current_data, file_name, area_name):
-    """Validate and safely replace one of the project's data tables."""
     with st.expander(f"Upload {area_name} data"):
         st.caption("Upload a CSV or Excel file with the same columns as the current table.")
         uploaded_file = st.file_uploader(
@@ -421,9 +401,8 @@ def show_data_importer(current_data, file_name, area_name):
             except Exception as error:
                 st.error(f"The file could not be read: {error}")
 
-
+# Search all project tables using normal pandas filtering
 def show_search_results(query, workers, incidents, equipment_summary, maintenance, alerts):
-    """Search all project tables using normal pandas filtering."""
     if not query.strip():
         return
     data_sets = {
@@ -449,9 +428,8 @@ def show_search_results(query, workers, incidents, equipment_summary, maintenanc
         if not results_found:
             st.info("No matching records were found.")
 
-
+# Show top-left navigation and a system-wide search field
 def show_top_navigation(workers, incidents, equipment_summary, maintenance, alerts):
-    """Show top-left navigation and a system-wide search field."""
     current_page = st.session_state.get("current_page", "Home")
     history = st.session_state.get("page_history", [])
     back_column, home_column, search_column = st.columns([0.07, 0.12, 0.81])
@@ -473,9 +451,8 @@ def show_top_navigation(workers, incidents, equipment_summary, maintenance, aler
         )
     show_search_results(query, workers, incidents, equipment_summary, maintenance, alerts)
 
-
+# Show the logged-in top bar using the quote chosen at sign-in
 def show_workspace_bar(user, alert_count):
-    """Show the logged-in top bar using the quote chosen at sign-in."""
     if "quote" not in st.session_state:
         choose_new_quote()
 
@@ -486,17 +463,15 @@ def show_workspace_bar(user, alert_count):
         unsafe_allow_html=True,
     )
 
-
+# Convert one saved background image into a browser-ready data URL
 def background_as_data_url(image_path):
-    """Convert one saved background image into a browser-ready data URL."""
     image_types = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
     image_type = image_types.get(image_path.suffix.lower(), "image/jpeg")
     encoded_image = base64.b64encode(image_path.read_bytes()).decode("utf-8")
     return f"data:{image_type};base64,{encoded_image}"
 
-
+# Return the saved shared Home date, or today's date if none is saved
 def load_home_display_date():
-    """Return the saved shared Home date, or today's date if none is saved."""
     try:
         saved_date = json.loads(HOME_SETTINGS_FILE.read_text(encoding="utf-8")).get("display_date")
         if saved_date:
@@ -505,9 +480,8 @@ def load_home_display_date():
         pass
     return datetime.now().date()
 
-
+# Return the permanently saved mine photos used on Home
 def saved_backgrounds():
-    """Return the permanently saved mine photos used on Home."""
     BACKGROUND_FOLDER.mkdir(parents=True, exist_ok=True)
     image_files = sorted(
         [
@@ -517,9 +491,8 @@ def saved_backgrounds():
     )
     return [background_as_data_url(path) for path in image_files]
 
-
+# Show a personalised home page with role-based workspace cards
 def show_home(workers, incidents, equipment_summary, alerts, user):
-    """Show a personalised home page with role-based workspace cards."""
     background_path = DATA_FOLDER / "login_background.jpg"
     home_photos = saved_backgrounds()
     display_date = load_home_display_date()
@@ -599,19 +572,17 @@ def show_home(workers, incidents, equipment_summary, alerts, user):
             Your available workspaces depend on your role. Only make changes when you have the right responsibility and current information.
             """
         )
-
+        
+# Read one CSV file from the data folder
 def load_data(file_name):
-    """Read one CSV file from the data folder."""
     return pd.read_csv(DATA_FOLDER / file_name)
 
-
+# Save updated data to the same CSV file
 def save_data(data_frame, file_name):
-    """Save updated data to the same CSV file."""
     data_frame.to_csv(DATA_FOLDER / file_name, index=False)
 
-
+# Show a data table only after its show button is pressed
 def show_data_table(data_frame, label, key, hide_index=False):
-    """Show a data table only after its show button is pressed."""
     state_key = f"show_table_{key}"
     is_visible = st.session_state.get(state_key, False)
     button_label = f"Hide {label}" if is_visible else f"Show {label}"
@@ -620,9 +591,8 @@ def show_data_table(data_frame, label, key, hide_index=False):
     if st.session_state.get(state_key, False):
         st.dataframe(data_frame, use_container_width=True, hide_index=hide_index)
 
-
+# Display the worker sign-in form without public account registration
 def show_login():
-    """Display the worker sign-in form without public account registration."""
     login_background = background_as_data_url(DATA_FOLDER / "login_background.jpg")
     st.markdown(
         f"""<style>
@@ -692,8 +662,8 @@ def show_login():
         cards[0].markdown("<div class='feature-card'><h4>Alerts</h4><p>See high-priority conditions without searching through spreadsheets.</p></div>", unsafe_allow_html=True)
         cards[1].markdown("<div class='feature-card'><h4>Risk control</h4><p>Use the transparent likelihood x consequence risk matrix.</p></div>", unsafe_allow_html=True)
 
+# Show the account form directly beneath the Administrator profile card
 def show_admin_account_form():
-    """Show the account form directly beneath the Administrator profile card."""
     with st.sidebar.expander("Create worker account"):
         st.caption("Administrator-only access. The Worker ID must already exist in worker safety data.")
         with st.form("admin_create_account_form", clear_on_submit=True):
@@ -716,9 +686,8 @@ def show_admin_account_form():
                 else:
                     st.error(message)
 
-
+# Display KPI cards and simple analytics
 def show_dashboard(workers, incidents, equipment_summary, alerts):
-    """Display KPI cards and simple analytics."""
     page_heading("Operations dashboard", "A quick view of the current safety and equipment picture.")
     critical_alerts = sum(1 for alert in alerts if alert["Level"] == "Critical")
     workers_at_risk = 0
@@ -765,8 +734,8 @@ def show_dashboard(workers, incidents, equipment_summary, alerts):
     st.plotly_chart(chart, use_container_width=True)
     st.caption("Temperature: normal below 80 °C; warning 80–100 °C; critical above 100 °C.")
 
+# Show, filter and add worker safety data
 def show_worker_safety(workers):
-    """Show, filter and add worker safety data."""
     page_heading("Worker safety", "Track the practical conditions that affect the people on site.")
     show_data_importer(workers, "workers.csv", "worker safety")
     department = st.selectbox("Filter by department", ["All"] + sorted(workers["Department"].dropna().unique().tolist()))
@@ -805,9 +774,8 @@ def show_worker_safety(workers):
             else:
                 st.warning("Enter Worker ID, Department and Job role.")
 
-
+# Show incident records and an entry form
 def show_incidents(incidents):
-    """Show incident records and an entry form."""
     page_heading("Safety incidents", "Review, filter and record safety events in one place.")
     show_data_importer(incidents, "incidents.csv", "safety incident")
     severity_filter = st.multiselect("Filter by severity", sorted(incidents["Severity"].dropna().unique().tolist()))
@@ -843,9 +811,8 @@ def show_incidents(incidents):
         else:
             st.warning("Complete every text field before saving.")
 
-
+# Display equipment condition monitoring with one-machine feedback
 def show_equipment(equipment, equipment_summary):
-    """Display equipment condition monitoring with one-machine feedback."""
     page_heading("Equipment Condition Monitoring", "Prioritise inspection using visible temperature and vibration limits.")
     show_data_importer(equipment, "equipment.csv", "equipment")
     eq = pd.DataFrame(equipment_summary).rename(columns={
@@ -881,9 +848,8 @@ def show_equipment(equipment, equipment_summary):
     )
     st.caption("Educational prototype thresholds only - not manufacturer or mine safety limits.")
 
-
+# Display grouped equipment maintenance monitoring conditions
 def show_maintenance(maintenance, equipment_summary):
-    """Display grouped equipment maintenance monitoring conditions."""
     from datetime import date
 
     page_heading("Equipment Maintenance Monitoring", "Keep service plans and equipment availability visible.")
@@ -927,9 +893,8 @@ def show_maintenance(maintenance, equipment_summary):
                 hide_index=True,
             )
 
-
+# Let users calculate the project risk matrix result themselves
 def show_risk_assessment():
-    """Let users calculate the project risk matrix result themselves."""
     page_heading("Risk assessment", "Calculate the risk score before deciding on controls.")
     st.write("Risk score = likelihood × consequence. Choose a value from 1 (low) to 5 (very high).")
     c1, c2 = st.columns(2)
@@ -946,9 +911,8 @@ def show_risk_assessment():
     else:
         st.success("LOW: Continue monitoring this risk.")
 
-
+# Show every automatically-created rule-based alert
 def show_alerts(alerts):
-    """Show every automatically-created rule-based alert."""
     page_heading("Alerts & notifications", "Rule-based alerts from the current worker, incident, equipment and maintenance data.")
     st.write("Alerts below are generated by the visible rules in `utils/logic.py`.")
     alert_df = pd.DataFrame(alerts)
@@ -965,9 +929,8 @@ def show_alerts(alerts):
         else:
             st.info(message)
 
-
+# Run the login page or the application navigation
 def main():
-    """Run the login page or the application navigation."""
     apply_custom_style()
     if "user" not in st.session_state:
         show_login()
