@@ -1,9 +1,10 @@
-# Pseudocode
+# Pseudocodes
 
 
 ## 1. Login and role-based access
 
 ```text
+BEGIN
 FUNCTION Login(username, workerID, password)
     users ← ReadUsers()
 
@@ -27,12 +28,13 @@ IF Login form is submitted THEN
     ELSE
         Display incorrect-credentials error
     END IF
-END IF
+END 
 ```
 
 ## 2. Administrator creates a worker account
 
 ```text
+BEGIN
 FUNCTION CreateAccount(workerID, username, password, fullName, title, role)
     IF any required field is empty THEN
         RETURN false, "Complete every required account field"
@@ -55,12 +57,13 @@ FUNCTION CreateAccount(workerID, username, password, fullName, title, role)
     Add account record to users
     WriteUsers(users)
     RETURN true, "Account created"
-END FUNCTION
+END 
 ```
 
 ## 3. Change password
 
 ```text
+BEGIN
 FUNCTION UpdatePassword(workerID, currentPassword, newPassword)
     IF length(newPassword) < 8 THEN
         RETURN false, "New password is too short"
@@ -80,12 +83,13 @@ FUNCTION UpdatePassword(workerID, currentPassword, newPassword)
     END FOR
 
     RETURN false, "Worker account not found"
-END FUNCTION
+END
 ```
 
 ## 4. Upload data
 
 ```text
+BEGIN
 FUNCTION ImportData(uploadedFile, currentData, fileName)
     IF uploadedFile extension is ".csv" THEN
         uploadedData ← ReadCSV(uploadedFile)
@@ -104,12 +108,13 @@ FUNCTION ImportData(uploadedFile, currentData, fileName)
         Save uploadedData using currentData column order to fileName
         Refresh application
     END IF
-END FUNCTION
+END 
 ```
 
 ## 5. Global search
 
 ```text
+BEGIN
 FUNCTION SearchSystem(query, workers, incidents, equipment, maintenance, alerts)
     IF Trim(query) is empty THEN
         RETURN
@@ -127,12 +132,13 @@ FUNCTION SearchSystem(query, workers, incidents, equipment, maintenance, alerts)
     IF resultsFound = false THEN
         Display "No matching records were found"
     END IF
-END FUNCTION
+END
 ```
 
 ## 6. Save worker safety observation
 
 ```text
+BEGIN
 IF SaveWorkerRecord is selected THEN
     IF workerID AND department AND jobRole are provided THEN
         score, level ← WorkerRisk(PPE, training, fatigue, observations,
@@ -144,12 +150,13 @@ IF SaveWorkerRecord is selected THEN
     ELSE
         Display required-fields warning
     END IF
-END IF
+END
 ```
 
 ## 7. Save incident
 
 ```text
+BEGIN
 IF SaveIncident is selected THEN
     required ← [incidentID, location, department, incidentType, cause, action]
 
@@ -161,12 +168,13 @@ IF SaveIncident is selected THEN
     ELSE
         Display complete-all-text-fields warning
     END IF
-END IF
+END
 ```
 
 ## 8. Equipment condition monitoring
 
 ```text
+BEGIN
 FUNCTION EquipmentStatus(temperature, vibration)
     IF temperature > 100 OR vibration > 8 THEN
         RETURN "CRITICAL", "Inspection required"
@@ -175,17 +183,19 @@ FUNCTION EquipmentStatus(temperature, vibration)
     ELSE
         RETURN "NORMAL", "Within monitoring limits"
     END IF
-END FUNCTION
+END IF
 
 selectedMachine ← machine selected by user
 status, message ← EquipmentStatus(selectedMachine.temperature,
                                   selectedMachine.vibration)
 Display status, message and temperature-vibration chart
+END
 ```
 
 ## 9. Maintenance monitoring
 
 ```text
+BEGIN
 FOR EACH equipment item IN equipmentSummary DO
     relatedRecords ← maintenance records for equipment item
     alertsCount ← Sum(relatedRecords.Alert_Count)
@@ -203,11 +213,13 @@ END FOR
 
 Display groups for Due, Overdue, Under Maintenance,
 Downtime > 12 hours, Alert Count ≥ 4 and Availability < 85%
+END
 ```
 
 ## 10. Risk assessment
 
 ```text
+BEGIN
 FUNCTION AssessRisk(likelihood, consequence)
     score ← likelihood × consequence
 
@@ -222,12 +234,13 @@ FUNCTION AssessRisk(likelihood, consequence)
     END IF
 
     RETURN score, level
-END FUNCTION
+END 
 ```
 
 ## 11. Dashboard, alerts and navigation
 
 ```text
+BEGIN
 workers ← LoadData("workers.csv")
 incidents ← LoadData("incidents.csv")
 equipment ← LoadData("equipment.csv")
@@ -241,11 +254,11 @@ availablePages ← ["Home"] + PagesForRole(currentUser.role)
 IF currentPage is not in availablePages THEN
     currentPage ← "Home"
 END IF
-
 IF SignOut is selected THEN
     Remove session user, currentPage and pageHistory
     Return to login page
 END IF
 
 Display selected page and its permitted data
+END
 ```
