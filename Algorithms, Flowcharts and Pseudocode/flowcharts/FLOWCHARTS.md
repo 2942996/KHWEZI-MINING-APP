@@ -170,10 +170,10 @@ flowchart TD
     B --> C[Select consequence 1 to 5]
     C --> D[Calculate score = likelihood x consequence]
     D --> E{Score category?}
-    E -- 1 to 4 --> F[Low: continue monitoring]
-    E -- 5 to 9 --> G[Medium: review and apply controls]
-    E -- 10 to 16 --> H[High: controls required before work]
-    E -- 17 to 25 --> I[Critical: stop and escalate]
+    E -- 1 to 4 --> F[/Low: continue monitoring/]
+    E -- 5 to 9 --> G[/Medium: review and apply controls/]
+    E -- 10 to 16 --> H[/High: controls required before work/]
+    E -- 17 to 25 --> I[/Critical: stop and escalate/]
     F --> J([End])
     G --> J
     H --> J
