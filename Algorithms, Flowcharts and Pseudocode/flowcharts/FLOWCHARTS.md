@@ -8,7 +8,7 @@ flowchart TD
     A([Start]) --> B[Enter username, Worker ID and password]
     B --> C[Read users.csv]
     C --> D{Username, Worker ID and password hash match?}
-    D -- No --> E[Show login error]
+    D -- No --> E[/Show login error/]
     E --> B
     D -- Yes --> F[Store user profile in session]
     F --> G[Get pages allowed for user role]
@@ -22,16 +22,16 @@ flowchart TD
 flowchart TD
     A([Administrator opens account form]) --> B[Enter worker details and temporary password]
     B --> C{All fields completed and password at least 8 characters?}
-    C -- No --> D[Show validation message]
+    C -- No --> D[/Show validation message/]
     D --> B
     C -- Yes --> E{Worker ID exists in workers.csv?}
-    E -- No --> F[Show invalid Worker ID message]
+    E -- No --> F[/Show invalid Worker ID message/]
     F --> B
     E -- Yes --> G{Worker ID or username already used?}
-    G -- Yes --> H[Show duplicate account message]
+    G -- Yes --> H[/Show duplicate account message/]
     H --> B
     G -- No --> I[Hash password and save account to users.csv]
-    I --> J[Show account created message]
+    I --> J[/Show account created message/]
     J --> K([End])
 ```
 
@@ -43,9 +43,9 @@ flowchart TD
     B --> C[Read uploaded table]
     C --> D[Compare uploaded columns to current table]
     D --> E{Any required columns missing?}
-    E -- Yes --> F[Display missing columns]
+    E -- Yes --> F[/Display missing columns/]
     F --> B
-    E -- No --> G[Display number of rows found]
+    E -- No --> G[/Display number of rows found/]
     G --> H{User confirms replacement?}
     H -- No --> I([Keep current data])
     H -- Yes --> J[Save accepted columns to project CSV]
@@ -59,15 +59,15 @@ flowchart TD
 flowchart TD
     A([Start]) --> B[Enter current and new password]
     B --> C{New password has at least 8 characters?}
-    C -- No --> D[Show password-length error]
+    C -- No --> D[/Show password-length error/]
     D --> B
     C -- Yes --> E[Read users.csv and find signed-in Worker ID]
     E --> F{Current password hash matches?}
-    F -- No --> G[Show current-password error]
+    F -- No --> G[/Show current-password error/]
     G --> B
     F -- Yes --> H[Create new salted password hash]
     H --> I[Update only this user record in users.csv]
-    I --> J[Show password updated message]
+    I --> J[/Show password updated message/]
     J --> K([End])
 ```
 
@@ -80,7 +80,7 @@ flowchart TD
     C -- Yes --> D([End])
     C -- No --> E[Search worker, incident, equipment, maintenance and alert tables]
     E --> F{Matches found in a table?}
-    F -- Yes --> G[Display matching rows and count]
+    F -- Yes --> G[/Display matching rows and count/]
     G --> H{More tables to search?}
     H -- Yes --> E
     H -- No --> D
@@ -93,13 +93,13 @@ flowchart TD
 flowchart TD
     A([Start]) --> B[Enter worker safety observation]
     B --> C{Worker ID, department and job role entered?}
-    C -- No --> D[Display required-fields warning]
+    C -- No --> D[/Display required-fields warning/]
     D --> B
     C -- Yes --> E[Calculate worker risk score and level]
     E --> F[Create worker safety record]
     F --> G[Append record to workers table]
     G --> H[Save workers.csv]
-    H --> I[Display score and level]
+    H --> I[/Display score and level/]
     I --> J([End])
 ```
 
@@ -108,17 +108,17 @@ flowchart TD
 ```mermaid
 flowchart TD
     A([Open incident page]) --> B{Severity filter selected?}
-    B -- Yes --> C[Show matching incidents]
-    B -- No --> D[Show all incidents]
+    B -- Yes --> C[/Show matching incidents/]
+    B -- No --> D[/Show all incidents/]
     C --> E[Create incidents by department chart]
     D --> E
     E --> F{User submits a new incident?}
     F -- No --> G([End])
     F -- Yes --> H{Required fields complete?}
-    H -- No --> I[Show warning]
+    H -- No --> I[/Show warning/]
     I --> F
     H -- Yes --> J[Append incident and save incidents.csv]
-    J --> K[Show success message]
+    J --> K[/Show success message/]
     K --> G
 ```
 
@@ -134,7 +134,7 @@ flowchart TD
     E -- No --> G{Temperature at least 80 C OR vibration at least 5 mm/s?}
     G -- Yes --> H[Set WARNING]
     G -- No --> I[Set NORMAL]
-    F --> J[Display message and scatter chart]
+    F --> J[/Display message and scatter chart/]
     H --> J
     I --> J
     J --> K([End])
@@ -158,7 +158,7 @@ flowchart TD
     H --> L
     J --> L
     K --> L
-    L --> M[Display maintenance groups]
+    L --> M[/Display maintenance groups/]
     M --> N([End])
 ```
 
@@ -190,7 +190,7 @@ flowchart TD
     D --> E[Count active and critical alerts]
     E --> F[Calculate dashboard indicators]
     F --> G[Create incident and equipment charts]
-    G --> H[Show dashboard and alert count]
+    G --> H[/Show dashboard and alert count/]
     H --> I([End])
 ```
 
